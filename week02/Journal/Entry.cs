@@ -2,6 +2,7 @@ using System;
 
 public class Entry
 {
+    //Atributes
     public string _date;
     public string _promptText;
     public string _entryText;
