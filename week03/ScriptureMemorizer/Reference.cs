@@ -1,6 +1,4 @@
 using System;
-using System.Collections.Concurrent;
-using System.Data;
 
 public class Reference
 {
@@ -27,6 +25,40 @@ public class Reference
         _endVerse = endVerse; 
     }
 
+    // Constructor that parses string references
+    public Reference(string referenceText)
+    {
+
+        string[] parts = referenceText.Split(' ');
+        
+        if (parts.Length >= 2)
+        {
+            // Book might have spaces (e.g., "1 Nephi")
+            
+            _book = string.Join(" ", parts, 0, parts.Length - 1);
+            
+            string chapterVerse = parts[parts.Length - 1];
+            string[] cvParts = chapterVerse.Split(':');
+            
+            if (cvParts.Length == 2)
+            {
+                _chapter = int.Parse(cvParts[0]);
+                
+                if (cvParts[1].Contains('-'))
+                {
+                    string[] verses = cvParts[1].Split('-');
+                    _verse = int.Parse(verses[0]);
+                    _endVerse = int.Parse(verses[1]);
+                }
+                else
+                {
+                    _verse = int.Parse(cvParts[1]);
+                    _endVerse = null;
+                }
+            }
+        }
+    }
+
    public string GetDisplayText()
     {
         if (_endVerse.HasValue)
@@ -39,5 +71,3 @@ public class Reference
         }
     }
 }
-
-

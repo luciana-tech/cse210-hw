@@ -21,10 +21,10 @@ public class Scripture
             _words.Add(new Word(word));
         }
     }
-
+    
     public void HideRandomWords(int numberToHide)
     {
-        
+        // For stretch challenge: only select from words that aren't hidden
         var visibleWords = _words.Where(w => !w.IsHidden()).ToList();
         
         // If there are fewer visible words than requested, hide all remaining
@@ -40,8 +40,7 @@ public class Scripture
             wordToHide.Hide();
         }
     }
-    
-    
+     
     public string GetDisplayText()
     {
         string displayText = _reference.GetDisplayText() + "\n\n";
@@ -54,7 +53,7 @@ public class Scripture
         return displayText.Trim();
     }
     
-        public bool IsCompletelyHidden()
+    public bool IsCompletelyHidden()
     {
         return _words.All(word => word.IsHidden());
     }
