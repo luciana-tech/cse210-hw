@@ -42,7 +42,13 @@ public class Program
         foreach(Order order in new List<Order> { order1, order2, order3 })
         {
         //Display Packing, Shipping Labels and Total Cost
-        order.DisplayOrderInfo();   
+        Console.WriteLine("Packing Label:");
+        order1.GetPackingLabel();   
+        Console.WriteLine("\nShipping Label:");
+        order1.GetShippingLabel();
+        Console.WriteLine();
+        Console.WriteLine($"Total Cost: ${order1.CalculateTotalCost():F2}");
+        Console.WriteLine("--------------------------\n");
         }
-    }
+    }    
 }
