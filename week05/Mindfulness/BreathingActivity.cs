@@ -27,5 +27,7 @@ public class BreathingActivity : Activity
             ShowCountDown(6);
         }
         DisplayEndingMessage();
+        // Log activity
+        ActivityLogger.LogActivity("Breathing", _duration);
     }
 }

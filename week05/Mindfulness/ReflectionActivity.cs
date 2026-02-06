@@ -63,7 +63,12 @@ public class ReflectingActivity : Activity
                 Console.WriteLine();
             }
             
+            // Count questions answered
+            int questionsAnswered = 0;
+
             DisplayEndingMessage();
+            // Log activity 
+            ActivityLogger.LogActivity("Reflection", _duration, questionsAnswered);
         }
         
         public string GetRandomPrompt()
