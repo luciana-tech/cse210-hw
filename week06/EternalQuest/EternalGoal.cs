@@ -1,22 +1,23 @@
 using System;
-
 public class EternalGoal : Goal
 {
-    public EternalGoal(string name, string description,  int points) : base(name, description, points) 
+    public EternalGoal(string name, string description, int points) 
+        : base(name, description, points)
     {
     }
 
     public override void RecordEvent()
     {
+        // Eternal goals are never complete, just record the event
     }
 
     public override bool IsComplete()
     {
-        return false;
+        return false; // Eternal goals are never complete
     }
 
     public override string GetStringsRepresentation()
     {
-        return "";
+        return $"EternalGoal:{_shortName},{_description},{_points}";
     }
 }
